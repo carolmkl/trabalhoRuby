@@ -1,11 +1,11 @@
-﻿class Matricula
-	attr_acessor: Aluno,Periodo,Disciplinas
+class Matricula
+	attr_acessor(Aluno,Periodo,Disciplinas)
 
 	def initialize(cod_matricula, aluno, periodo, disciplinas)
 		@numero = cod_matricula
-		Aluno = aluno
-		Periodo = periodo
-		Disciplinas = disciplinas
+    self.Aluno = aluno
+    self.Periodo = periodo
+    self.Disciplinas = disciplinas
 	end #initialize
 	
 	def Numero
