@@ -1,5 +1,5 @@
 ﻿class Matricula
-	attr_acessor : Aluno,Periodo,Disciplinas
+	attr_acessor: Aluno,Periodo,Disciplinas
 
 	def initialize(cod_matricula, aluno, periodo, disciplinas)
 		@numero = cod_matricula

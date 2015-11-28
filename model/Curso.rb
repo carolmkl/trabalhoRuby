@@ -1,5 +1,5 @@
 ﻿class Curso
-	attr_acessor : Nome,Duracao,GradeCurricular
+	attr_acessor: Nome,Duracao,GradeCurricular
 
 	def initialize(cod_curso, nome, duracao, gradeCurricular)
 		@codigo = cod_disciplina

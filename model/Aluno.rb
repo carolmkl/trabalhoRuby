@@ -1,5 +1,5 @@
 ﻿class Aluno
-	attr_acessor : Nome,Email,Curso
+	attr_acessor: Nome,Email,Curso
 
 	def initialize(cod_aluno, nome, email, curso)
 		@ra = cod_aluno

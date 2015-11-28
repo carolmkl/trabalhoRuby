@@ -1,5 +1,5 @@
 class Disciplina
-	attr_acessor : Nome,CargaHoraria,Valor
+  attr_acessor: Nome,CargaHoraria,Valor
 
 	def initialize(cod_disciplina, nome, carga_horaria, valor)
 		@codigo = cod_disciplina
