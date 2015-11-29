@@ -6,8 +6,8 @@ class Disciplina
     @valor = valor
   end #initialize
 
-  def RA
-    @ra
+  def Codigo
+    @cd_disciplina
   end
 
   def altera(nome, carga_horaria, valor)
@@ -16,7 +16,7 @@ class Disciplina
     @valor = valor
   end
 
-  def valor
+  def Valor
     @valor
   end
 

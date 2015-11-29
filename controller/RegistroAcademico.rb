@@ -78,10 +78,6 @@ class RegistroAcademico
     @disciplinas
   end
 
-  def getDisciplina(cod_disciplina)
-    @disciplinas[cod_disciplina]
-  end
-
   #MANUTENÇÃO DE MATRICULAS========================
   def incluiMatricula(aluno, periodo, disciplinas)
     matricula = Matricula.new(@@cdMatriculas,aluno, periodo, disciplinas)

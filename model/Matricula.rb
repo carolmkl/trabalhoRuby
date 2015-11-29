@@ -22,10 +22,10 @@ class Matricula
     @disciplinas.push(disciplina)
   end
 
-  def valorTotal
+  def ValorTotal
     vlr = 0
     for disciplina in @disciplinas
-      vlr += disciplina.valor
+      vlr += disciplina.Valor
     end
   end
 
