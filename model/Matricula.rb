@@ -3,7 +3,7 @@ class Matricula
 
 	def initialize(cod_matricula, aluno, periodo, disciplinas)
 		@numero = cod_matricula
-    self.Aluno = aluno
+    self.Aluno =  aluno
     self.Periodo = periodo
     self.Disciplinas = disciplinas
 	end #initialize
