@@ -1,6 +1,6 @@
 require '.\exception\OpcaoInvalidaException'
-require '.\model\RegistroAcademico'
-require '.\model\Aluno'
+require '.\controller\RegistroAcademico.rb'
+require '.\model\Aluno.rb'
 
 def manutencaoAluno(reg)
   begin

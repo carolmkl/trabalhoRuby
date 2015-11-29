@@ -1,12 +1,11 @@
-require_relative Matricula
-require_relative Disciplina
-require_relative Curso
-require_relative Aluno
+require '.\model\Matricula.rb'
+require '.\model\Disciplina.rb'
+require '.\model\Curso.rb'
+require '.\model\Aluno.rb'
 
 class RegistroAcademico
   @@cdAlunos = 1
   @@cdCursos = 1
-  @@cdDisciplinas = 1
   @@cdMatriculas = 1
   def initialize
     @alunos = Hash.new
@@ -60,10 +59,11 @@ class RegistroAcademico
   end
 
   #MANUTENÇÃO DE DISCIPLINAS========================
-  def incluiDisciplina(nome, carga_horaria, valor)
-    disciplina = Disciplina.new(@@cdDisciplinas,nome, carga_horaria, valor)
-    @disciplinas[@@cdDisciplinas] = disciplina
-    @@cdDisciplinas += 1
+  def incluiDisciplina(codigo, nome, carga_horaria, valor)
+    if @disciplinas[codigo] then
+    end #if
+    disciplina = Disciplina.new(codigo, nome, carga_horaria, valor)
+    @disciplinas[codigo] = disciplina
   end
 
   def alteraDisciplina(cod_disciplina, nome, carga_horaria, valor)
@@ -74,10 +74,12 @@ class RegistroAcademico
     @disciplinas.delete(cd_disciplina)
   end
 
-  def mostraDisciplinas
-    for disciplina in @disciplinas.keys();
-      puts @disciplinas[disciplina].to_s
-    end
+  def Disciplinas
+    @disciplinas
+  end
+
+  def getDisciplina(cod_disciplina)
+    @disciplinas[cod_disciplina]
   end
 
   #MANUTENÇÃO DE MATRICULAS========================

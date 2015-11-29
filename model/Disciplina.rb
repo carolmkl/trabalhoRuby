@@ -21,7 +21,8 @@ class Disciplina
   end
 
   def to_s
-    @cd_disciplina.to_s << "|" << @nome << "|" << @carga_horaria.to_s << "|" << @valor.to_s
+    texto = "Código: %s | Nome: %s | Carga Horária: %d | Valor: R$%.2f" % [@cd_disciplina,@nome,@carga_horaria,@valor]
+    texto.to_s
   end
 
 end #class
