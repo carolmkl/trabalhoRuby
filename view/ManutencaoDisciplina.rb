@@ -1,0 +1,2 @@
+def manutencaoDisciplina(reg)
+end
