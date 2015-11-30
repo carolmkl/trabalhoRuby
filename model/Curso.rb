@@ -37,12 +37,12 @@ class Curso
   end
 
   def to_s
-    texto = "Código: %d | Nome: %s" % [@cd_curso,@nome]
+    texto = "Nome: %s" % [@nome]
     texto.to_s
   end
 
   def to_s_inteiro
-    texto = "Código: %d | Nome: %s | Duração: %d\nGrade Curricular:\n%s" % [@cd_curso,@nome,@duracao,@gradeCurricular.to_s]
+    texto = "%d | Nome: %s | Duração: %d semestre(s)\nGrade Curricular:\n%s" % [@cod_curso,@nome,@duracao,@gradeCurricular.to_s]
     texto.to_s 
   end
 

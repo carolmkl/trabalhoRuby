@@ -1,17 +1,11 @@
 require '.\exception\OpcaoInvalidaException'
 require '.\controller\RegistroAcademico.rb'
-require '.\model\Disciplina.rb'
-require_relative 'Manutencao.rb'
+require '.\view\Manutencao.rb'
 
 class ManutencaoDisciplina < Manutencao
   
   def initialize(hash, registroAcademico,classe)
-    super(hash,registroAcademico,classe)
-    mostraMenu
-  end
-  
-  def mostraMenu
-    super
+    super hash,registroAcademico,classe
   end
 
   def insere

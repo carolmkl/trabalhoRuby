@@ -33,6 +33,7 @@ class RegistroAcademico
     aluno = Aluno.new(@@cdAlunos,nome,email,curso)
     @alunos[@@cdAlunos] = aluno
     @@cdAlunos += 1
+    aluno
   end
 
   def alteraAluno(cd_aluno,nome,email,codcurso)
@@ -55,6 +56,7 @@ class RegistroAcademico
     curso = Curso.new(@@cdCursos,nome,duracao,gradeCurricular)
     @cursos[@@cdCursos] = curso
     @@cdCursos += 1
+    curso
   end
 
   def alteraCurso(cd_curso,nome,duracao,gradeCurricular)
@@ -86,6 +88,7 @@ class RegistroAcademico
     matricula = Matricula.new(@@cdMatriculas,aluno, periodo, disciplinas)
     @matriculas[@@cdMatriculas] = matricula
     @@cdMatriculas += 1
+    matricula
   end
 
   def alteraMatricula(cd_matricula, aluno, periodo, disciplinas)
@@ -99,6 +102,10 @@ class RegistroAcademico
   #ENCAPSULADORES================================
   def Cursos
     @cursos
+  end
+
+  def Alunos
+    @alunos
   end
 
   def Disciplinas
@@ -119,15 +126,15 @@ class RegistroAcademico
     #Curso Caro
     gradeCurricular = Hash.new
     gradeCurricular[1] = Hash.new
-    gradeCurricular[1]["DIS"] = Disciplinas["DIS"]
-    gradeCurricular[1]["DIS2"] = Disciplinas["DIS2"]
+    gradeCurricular[1]["DIS"] = @disciplinas["DIS"]
+    gradeCurricular[1]["DIS2"] = @disciplinas["DIS2"]
     gradeCurricular[2] = Hash.new
-    gradeCurricular[2]["FIS"] = Disciplinas["FIS"]
-    gradeCurricular[2]["FIS2"] = Disciplinas["FIS2"]
+    gradeCurricular[2]["FIS"] = @disciplinas["FIS"]
+    gradeCurricular[2]["FIS2"] = @disciplinas["FIS2"]
     incluiCurso("Curso Caro", 2, gradeCurricular)
     #Aluno Rico
     incluiAluno("Marco Rico","marco@gmail.com",1)
-    
+
   end
 
 end

@@ -1,28 +1,19 @@
 require '.\exception\OpcaoInvalidaException'
 require '.\controller\RegistroAcademico.rb'
-require '.\model\Curso.rb'
+require '.\view\Manutencao.rb'
 
-require_relative 'ManutencaoDisciplina.rb'
-require_relative 'Manutencao.rb'
-
-class ManutencaoDisciplina < Manutencao
-
-  def initialize(hash, registroAcademico,classe,manutencaoDisciplina)
+class ManutencaoCurso < Manutencao
+  def initialize(hash, registroAcademico,classe,manDisciplina)
     super(hash,registroAcademico,classe)
-    @manutencaoDisciplina = manutencaoDisciplina
-    mostraMenu
+    @manDisciplina = manDisciplina
   end
-  
-  def mostraMenu
-    super
-  end
+
   def insere
     puts "Insira o nome:"
     nome = gets.chomp
     puts "Insira quantos semestres possui o curso:"
     duracao = gets.chomp.to_i
-    @manutencaoDisciplina.lista
-    gradeCurricular = informaGradeCurricular(reg,duracao)
+    gradeCurricular = informaGradeCurricular(duracao)
     curso = @reg.incluiCurso(nome,duracao,gradeCurricular)
     puts "Curso incluído!"
     puts curso.to_s_inteiro
@@ -35,7 +26,7 @@ class ManutencaoDisciplina < Manutencao
     if @hash.key?(codigo)
       puts "Insira o nome:"
       nome = gets.chomp
-      puts "Insira a quantidade de semestres do curso:"
+      puts "Insira quantos semestres possui o curso:"
       duracao = gets.chomp.to_i
       gradeCurricular = @hash[codigo].GradeCurricular
       if @hash[codigo].Duracao != duracao
@@ -54,23 +45,23 @@ class ManutencaoDisciplina < Manutencao
 
   def informaGradeCurricular(duracao)
     gradeCurricular = Hash.new
-
-    1..duracao.each do |i|
+    @manDisciplina.lista
+    for i in 1..duracao
       gradeCurricular[i] = Hash.new
       retorno = 0;
       until retorno == "9" do
         puts "Informe o código da disciplina para o %do semestre ou 9 para finalizar" % [i]
         retorno = gets.chomp
         if retorno != "9"
-          if (@manutencaoDisciplina.Hash.key?(retorno) && !gradeCurricular[i].key?(retorno))
-            gradeCurricular[retorno] = @manutencaoDisciplina.Hash[retorno]
+          if (@manDisciplina.Hash.key?(retorno) && !gradeCurricular[i].key?(retorno))
+            gradeCurricular[retorno] = @manDisciplina.Hash[retorno]
             puts "Incluído!"
           else
             puts "Código inválido"
           end #if
         end #if
       end #until
-    end #each
+    end #for
     gradeCurricular
   end
 

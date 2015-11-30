@@ -17,12 +17,12 @@ class Aluno
   end
 
   def to_s
-    texto = "RA: %d | Nome: %s" % [@ra,@nome]
+    texto = "Nome: %s" % [@nome]
     texto.to_s
   end
 
   def to_s_inteiro
-    texto = "RA: %d | Nome: %s | Email: %s | Curso %s" % [@ra,@nome,@email,@curso.Nome]
+    texto = "%d | Nome: %s | Email: %s | Curso: %s" % [@ra,@nome,@email,@curso.Nome]
     texto.to_s
   end
 

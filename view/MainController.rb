@@ -1,14 +1,20 @@
 require '.\exception\OpcaoInvalidaException'
 require '.\controller\RegistroAcademico'
+
 require_relative 'ManutencaoAluno'
 require_relative 'ManutencaoCurso'
 require_relative 'ManutencaoDisciplina'
 require_relative 'ManutencaoMatricula'
 
-reg = RegistroAcademico.new
+@reg = RegistroAcademico.new
+@reg.popularDados
+@manDisciplina = ManutencaoDisciplina.new(@reg.Disciplinas,@reg,"Disciplina")
+@manCurso = ManutencaoCurso.new(@reg.Cursos,@reg,"Curso",@manDisciplina)
+@manAluno = ManutencaoAluno.new(@reg.Alunos,@reg,"Aluno",@manCurso)
+@manMatricula = ManutencaoMatricula.new(@reg.Matriculas,@reg,"Matricula",@manAluno,@manDisciplina)
 
-begin
-  
+begin #while
+
   puts "Escolha uma opção: "
   puts "1) Manutenção de Alunos"
   puts "2) Manutenção de Cursos"
@@ -18,22 +24,24 @@ begin
 
   opcao = gets.chomp
 
-  case opcao
-  when "1"
-    manutencaoAluno(reg) #metodo do arquivo ManutencaoAluno
-  when "2"
-    manutencaoCurso(reg)
-  when "3"
-    ManutencaoDisciplina.new(reg.Disciplinas,reg,"Disciplina")
-  when "4"
-    manutencaoMatricula(reg)
-  when "5"
-    puts "Adeus."
-  else
-    begin
+  begin
+    case opcao
+    when "1"
+      @manAluno.mostraMenu
+    when "2"
+      @manCurso.mostraMenu
+    when "3"
+      @manDisciplina.mostraMenu
+    when "4"
+      @manMatricula.mostraMenu
+    when "5"
+      puts "Adeus."
+    else
       raise OpcaoInvalidaException
-    rescue Exception
-      puts "Você escolheu uma opção inválida. Escolha um número entre 1 e 5, incluídos."
-    end
-  end
+    end #case
+  rescue OpcaoInvalidaException
+    puts "Você escolheu uma opção inválida. Escolha um número entre 1 e 5, incluídos."
+  #rescue Exception => ex
+  #  puts "Foi lançada a exceção: #{ex}"
+  end #rescue
 end while opcao != "5"

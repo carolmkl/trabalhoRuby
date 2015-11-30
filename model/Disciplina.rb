@@ -21,12 +21,12 @@ class Disciplina
   end
 
   def to_s
-    texto = "Código: %s | Nome: %s" % [@cd_disciplina,@nome]
+    texto = "Nome: %s" % [@nome]
     texto.to_s
   end
 
   def to_s_inteiro
-    texto = "Código: %s | Nome: %s | Carga Horária: %d | Valor: R$%.2f" % [@cd_disciplina,@nome,@carga_horaria,@valor]
+    texto = "%s | Nome: %s | Carga Horária: %d | Valor: R$%.2f" % [@cd_disciplina,@nome,@carga_horaria,@valor]
     texto.to_s
   end
 

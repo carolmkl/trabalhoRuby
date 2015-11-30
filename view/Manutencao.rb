@@ -1,19 +1,14 @@
 require '.\exception\OpcaoInvalidaException'
 require '.\exception\CodigoInvalidoException'
 require '.\controller\RegistroAcademico.rb'
-require '.\model\Curso.rb'
-
 
 class Manutencao #tentativa de herança, ainda precisa esquematizar
-  
   def initialize(hash, registroAcademico,classe)
     @hash = hash
     @reg = registroAcademico
     @classe = classe
   end
-  
-  def 
-  
+
   def mostraMenu
     begin
       puts
@@ -59,6 +54,8 @@ class Manutencao #tentativa de herança, ainda precisa esquematizar
     codigo = gets.chomp
     if @hash.key?(codigo)
       puts @hash[codigo].to_s_inteiro
+    elsif @hash.key?(codigo.to_i)
+    puts @hash[codigo.to_i].to_s_inteiro
     else
       raise CodigoInvalidoException
     end
@@ -77,12 +74,18 @@ class Manutencao #tentativa de herança, ainda precisa esquematizar
   end
 
   def lista
-    @hash.each do |k,v|
-      puts v.to_s
-    end #each
+    puts @hash.to_s
   end
 
   def Hash
-    @lista
+    @hash
   end
 end #class
+
+class Hash
+  def to_s
+    keys.inject([]) do |a, key|
+      a << "#{key}: #{fetch(key)}"
+    end.join("\n")
+  end
+end
