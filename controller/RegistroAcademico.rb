@@ -52,12 +52,6 @@ class RegistroAcademico
     @cursos.delete(cd_curso)
   end
 
-  def mostraCursos
-    for curso in @cursos.keys();
-      puts @cursos[curso].to_s
-    end
-  end
-
   #MANUTENÇÃO DE DISCIPLINAS========================
   def incluiDisciplina(codigo, nome, carga_horaria, valor)
     if @disciplinas[codigo] then
@@ -72,10 +66,6 @@ class RegistroAcademico
 
   def removeDisciplina(cd_disciplina)
     @disciplinas.delete(cd_disciplina)
-  end
-
-  def Disciplinas
-    @disciplinas
   end
 
   #MANUTENÇÃO DE MATRICULAS========================
@@ -96,15 +86,15 @@ class RegistroAcademico
   end
 
   #ENCAPSULADORES================================
-  def cursos
+  def Cursos
     @cursos
   end
 
-  def disciplinas
+  def Disciplinas
     @disciplinas
   end
 
-  def matriculas
+  def Matriculas
     @matriculas
   end
 

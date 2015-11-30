@@ -91,4 +91,5 @@ def listaDisciplinas(reg)
   reg.Disciplinas.each do |k,v|
     puts v.to_s
   end #each
+  
 end
