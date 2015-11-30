@@ -15,6 +15,10 @@ class Curso
   def Duracao
     @duracao
   end
+  
+  def Nome
+    @nome
+  end
 
   def GradeCurricular
     @gradeCurricular
@@ -38,8 +42,8 @@ class Curso
   end
 
   def to_s_inteiro
-    texto = "Código: %d | Nome: %s | Duração: %d\nGrade Curricular:\n" % [@cd_curso,@nome,@duracao]
-    texto = texto.to_s ++ @gradeCurricular.to_s
+    texto = "Código: %d | Nome: %s | Duração: %d\nGrade Curricular:\n%s" % [@cd_curso,@nome,@duracao,@gradeCurricular.to_s]
+    texto.to_s 
   end
 
 end #class

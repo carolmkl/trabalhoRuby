@@ -8,6 +8,7 @@ require_relative 'ManutencaoMatricula'
 reg = RegistroAcademico.new
 
 begin
+  
   puts "Escolha uma opção: "
   puts "1) Manutenção de Alunos"
   puts "2) Manutenção de Cursos"
@@ -23,7 +24,7 @@ begin
   when "2"
     manutencaoCurso(reg)
   when "3"
-    manutencaoDisciplina(reg)
+    ManutencaoDisciplina.new(reg.Disciplinas,reg,"Disciplina")
   when "4"
     manutencaoMatricula(reg)
   when "5"

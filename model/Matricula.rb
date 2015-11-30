@@ -33,4 +33,8 @@ class Matricula
     @cd_matricula << "|" << @aluno << "|" << @periodo << "|" << @disciplinas.to_s << "|" << valorTotal.to_s
   end
 
+  def to_s_inteiro
+    @cd_matricula << "|" << @aluno << "|" << @periodo << "|" << @disciplinas.to_s << "|" << valorTotal.to_s
+  end
+
 end #class

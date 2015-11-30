@@ -14,6 +14,19 @@ class RegistroAcademico
     @matriculas = Hash.new
   end
 
+  #remove genérico
+  def remove(hash,codigo)
+    if hash.equal?(@alunos)
+      removeAluno(codigo.to_i)
+    elsif hash.equal?(@cursos)
+      removeCurso(codigo.to_i)
+    elsif hash.equal?(@disciplinas)
+      removeDisciplina(codigo)
+    elsif hash.equal?(@matriculas)
+      removeMatricula(codigo.to_i)
+    end
+  end
+
   #MANUTENÇÃO DE ALUNOS========================
   def incluiAluno(nome,email,codcurso)
     curso = @cursos[codcurso]
@@ -79,10 +92,8 @@ class RegistroAcademico
     @matriculas[cd_matricula].altera(aluno, periodo, disciplinas)
   end
 
-  def mostraMatriculas
-    for matricula in @matriculas.keys();
-      puts @matriculas[matricula].to_s
-    end
+  def removeMatricula(cd_matricula)
+    @matriculas.delete(cd_matricula)
   end
 
   #ENCAPSULADORES================================
@@ -96,6 +107,27 @@ class RegistroAcademico
 
   def Matriculas
     @matriculas
+  end
+
+  #Popular dados para teste
+  def popularDados
+    #Disciplinas
+    incluiDisciplina("DIS","Teste",40,2000)
+    incluiDisciplina("FIS","T-Systems",70,5000)
+    incluiDisciplina("DIS2","Teste2",20,1000)
+    incluiDisciplina("FIS2","T-Systems",50,10000)
+    #Curso Caro
+    gradeCurricular = Hash.new
+    gradeCurricular[1] = Hash.new
+    gradeCurricular[1]["DIS"] = Disciplinas["DIS"]
+    gradeCurricular[1]["DIS2"] = Disciplinas["DIS2"]
+    gradeCurricular[2] = Hash.new
+    gradeCurricular[2]["FIS"] = Disciplinas["FIS"]
+    gradeCurricular[2]["FIS2"] = Disciplinas["FIS2"]
+    incluiCurso("Curso Caro", 2, gradeCurricular)
+    #Aluno Rico
+    incluiAluno("Marco Rico","marco@gmail.com",1)
+    
   end
 
 end

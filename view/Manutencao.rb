@@ -1,26 +1,29 @@
 require '.\exception\OpcaoInvalidaException'
+require '.\exception\CodigoInvalidoException'
 require '.\controller\RegistroAcademico.rb'
 require '.\model\Curso.rb'
 
-require_relative 'ManutencaoDisciplina.rb'
 
 class Manutencao #tentativa de herança, ainda precisa esquematizar
   
   def initialize(hash, registroAcademico,classe)
-    @lista = hash
+    @hash = hash
     @reg = registroAcademico
     @classe = classe
   end
   
+  def 
+  
   def mostraMenu
     begin
-      puts "Manutenção de /ss" % [@classe]
+      puts
+      puts "Manutenção de %ss" % [@classe]
       puts "Escolha uma opção: "
-      puts "1) Inclui /s" % [@classe]
-      puts "2) Alterar /s" % [@classe]
-      puts "3) Remover /s" % [@classe]
-      puts "4) Listar /s" % [@classe]
-      puts "5) Descrever /s" % [@classe]
+      puts "1) Inclui %s" % [@classe]
+      puts "2) Alterar %s" % [@classe]
+      puts "3) Remover %s" % [@classe]
+      puts "4) Listar %s" % [@classe]
+      puts "5) Descrever %s" % [@classe]
       puts "6) Voltar ao menu"
 
       opcao = gets.chomp
@@ -50,27 +53,12 @@ class Manutencao #tentativa de herança, ainda precisa esquematizar
     end while opcao != "6"
   end
 
-  def insere()
-    puts "Insira o nome:"
-    nome = gets.chomp
-    puts "Insira quantos semestres possui o curso:"
-    duracao = gets.chomp.to_i
-    lista
-    gradeCurricular = informaGradeCurricular(reg,duracao)
-    curso = reg.incluiCurso(nome,duracao,gradeCurricular)
-    puts "Curso incluído!"
-    puts curso.to_s_inteiro
-  end
-
-  def altera
-  end
-
   def descreve
     lista
     puts "Digite o código para descrição:"
     codigo = gets.chomp
-    if @lista.key?(codigo)
-      @lista[key].to_s_inteiro
+    if @hash.key?(codigo)
+      puts @hash[codigo].to_s_inteiro
     else
       raise CodigoInvalidoException
     end
@@ -80,13 +68,21 @@ class Manutencao #tentativa de herança, ainda precisa esquematizar
     lista
     puts "Digite o código para exclusão:"
     codigo = gets.chomp
-    reg.removeCurso(codigo)
+    if @hash.key?(codigo) || @hash.key?(codigo.to_i)
+      @reg.remove(@hash,codigo)
+      puts "%s removido(a)!" % [@classe]
+    else
+      raise CodigoInvalidoException
+    end
   end
 
   def lista
-    @lista.each do |k,v|
+    @hash.each do |k,v|
       puts v.to_s
     end #each
   end
 
+  def Hash
+    @lista
+  end
 end #class
