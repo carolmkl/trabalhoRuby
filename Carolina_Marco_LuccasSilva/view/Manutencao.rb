@@ -1,6 +1,6 @@
-require '.\exception\OpcaoInvalidaException'
-require '.\exception\CodigoInvalidoException'
-require '.\controller\RegistroAcademico.rb'
+require '..\exception\OpcaoInvalidaException'
+require '..\exception\CodigoInvalidoException'
+require '..\controller\RegistroAcademico.rb'
 
 class Manutencao #tentativa de herança, ainda precisa esquematizar
   def initialize(hash, registroAcademico,classe)

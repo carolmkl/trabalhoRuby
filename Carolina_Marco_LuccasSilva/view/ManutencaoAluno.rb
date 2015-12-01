@@ -1,6 +1,6 @@
-require '.\exception\OpcaoInvalidaException'
-require '.\controller\RegistroAcademico.rb'
-require '.\view\Manutencao.rb'
+require '..\exception\OpcaoInvalidaException'
+require '..\controller\RegistroAcademico.rb'
+require '..\view\Manutencao.rb'
 
 class ManutencaoAluno < Manutencao
   def initialize(hash, registroAcademico,classe,manCursos)

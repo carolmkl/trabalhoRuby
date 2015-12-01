@@ -1,0 +1,1 @@
+ruby ./view/MainController.rb

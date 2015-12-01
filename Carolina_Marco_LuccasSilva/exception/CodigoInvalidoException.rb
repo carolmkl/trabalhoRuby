@@ -1,0 +1,2 @@
+class CodigoInvalidoException < Exception
+end

@@ -1,5 +1,5 @@
-require '.\exception\OpcaoInvalidaException'
-require '.\controller\RegistroAcademico'
+require '..\exception\OpcaoInvalidaException'
+require '..\controller\RegistroAcademico'
 
 require_relative 'ManutencaoAluno'
 require_relative 'ManutencaoCurso'
